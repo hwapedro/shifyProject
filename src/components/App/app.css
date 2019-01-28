@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body .sosi{
+  height: 100vh;
+  background-image: url('./background54.png');
+  background-repeat: repeat;
+}
+body .container {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 1000px;
+}
+.header {
+    
+  padding-top: 40px;
+  height: 80px;
+}
+.user_GridRight {
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-end;
+}
+body .user_purpleAvatar {
+  margin: 10;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.281);
+}
+.user_purpleAvatar:hover {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
