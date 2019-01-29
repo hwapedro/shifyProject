@@ -35,14 +35,14 @@ class Recipe extends Component {
     });
 
     const response = await fetch(
-      `http://germangorodnev.com:4500/recipe/${this.props.match.params.id}`,
+      `${window.REMOTE}/recipe/${this.props.match.params.id}`,
       { method: "GET", headers: myHeaders }
     );
 
     const data = await response.json();
     console.log(this.props);
 
-    const res = await fetch(`http://germangorodnev.com:4500/ingredient`, {
+    const res = await fetch(`${window.REMOTE}/ingredient`, {
       method: "GET",
       headers: myHeaders
     });
@@ -69,7 +69,7 @@ class Recipe extends Component {
     });
     console.log(id);
     const response = await fetch(
-      `http://germangorodnev.com:4500/recipe/${this.props.match.params.id}`,
+      `${window.REMOTE}/recipe/${this.props.match.params.id}`,
       {
         method: "PUT",
         headers: myHeaders,

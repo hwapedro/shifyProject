@@ -39,7 +39,7 @@ class App extends Component {
       "Content-Type": "application/json"
     });
     const response = await fetch(
-      `http://germangorodnev.com:4500/user/${userId}/fridge`,
+      `${window.REMOTE}/user/${userId}/fridge`,
       { method: "GET", headers: myHeaders }
     );
     const data = await response.json();

@@ -34,7 +34,7 @@ class NewReceipe extends Component {
       "Content-Type": "application/json"
     });
     console.log(id);
-    const response = await fetch(`http://germangorodnev.com:4500/recipe/`, {
+    const response = await fetch(`${window.REMOTE}/recipe/`, {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
@@ -83,7 +83,7 @@ class NewReceipe extends Component {
       "Content-Type": "application/json"
     });
 
-    const res = await fetch(`http://germangorodnev.com:4500/ingredient`, {
+    const res = await fetch(`${window.REMOTE}/ingredient`, {
       method: "GET",
       headers: myHeaders
     });

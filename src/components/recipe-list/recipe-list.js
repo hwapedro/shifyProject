@@ -13,14 +13,14 @@ class RecipeList extends Component {
   componentDidMount = async () => {
     const userId =
       localStorage.getItem("userId") ||
-      (localStorage.setItem("userId", "5c4f355fa52b96291c571888") ||
-        "5c4f355fa52b96291c571888");
+      (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
+        "5c4edc01fc79b221b47f0d68");
   
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
     const response = await fetch(
-      `http://germangorodnev.com:4500/recipe/`,
+      `${window.REMOTE}/recipe/`,
       { method: "GET", headers: myHeaders }
     );
     const data = await response.json();
