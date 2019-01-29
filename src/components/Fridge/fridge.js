@@ -23,7 +23,6 @@ class Fridge extends Component {
 
   render() {
     const { classes, closeFridge, visible, fridge } = this.props;
-    console.log(fridge[0]);
     return (
       <div className="cold">
         <div className={"container  " + (visible ? "" : "hidden")}>

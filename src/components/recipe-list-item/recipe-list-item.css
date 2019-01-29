@@ -1,0 +1,22 @@
+
+  
+  .recipe-list-item-label {
+    margin-left: 1.25rem;
+    line-height: 35px;
+    
+    user-select: none;
+  }
+
+  .recipe-item{
+      
+      padding: 0;
+  }
+  
+  .who-create{
+    margin-left: 1.25rem;
+    font-size: 12px;
+    font-style: italic;
+  }
+  .btn {
+    z-index: 10;
+  }

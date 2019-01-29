@@ -5,6 +5,7 @@ import "./index.css";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import NewRecipe from "./components/NewRecipe";
 import App from "./components/App";
+import Recipe from "./components/Recipe";
 
 
 class Shift extends React.Component {
@@ -14,7 +15,7 @@ class Shift extends React.Component {
         <Switch>
           <Route path="/" exact component={App} />
           <Route path="/newRecipe" component={NewRecipe} />
-          <Route path="/recipe/:id" component={NewRecipe} />
+          <Route path="/recipe/:id" component={Recipe} />
           <Route path="/register" component={NewRecipe} />
           <Route path="/login" component={NewRecipe} />
         </Switch>

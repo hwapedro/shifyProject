@@ -3,18 +3,33 @@ import React, { Component } from "react";
 import Header from "../Header";
 import Fridge from "../Fridge";
 
+
+
+import RecipeList from "../recipe-list"
+
 import Avatar from "@material-ui/core/Avatar";
 
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
 
-export default class App extends Component {
+
+const styles = theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  }
+});
+
+class App extends Component {
   state = {
     fridgeVisible: false,
     succsess: true,
     error: undefined,
     fridge: []
   };
+
+  
 
   componentDidMount = async () => {
     const userId =
@@ -30,10 +45,13 @@ export default class App extends Component {
       { method: "GET", headers: myHeaders }
     );
     const data = await response.json();
-    console.log(data);
     this.setState({
       fridge: data.content.fridge
     });
+  };
+
+  showRecipe = () => {
+    this.props.history.push("/recipe/:id");
   };
 
   openFridge = () => {
@@ -49,7 +67,7 @@ export default class App extends Component {
   };
 
   render() {
-    console.log(this.state);
+    const { list } =this.state
     return (
       <div className="sosi">
         <div className="header">
@@ -76,17 +94,19 @@ export default class App extends Component {
                 </div>
               </div>
             </div>
+            <RecipeList />
             <div className="col-md-3" />
           </div>
         </div>
-        <div className="fridge1">
-          <Fridge
-            fridge = {this.state.fridge}
-            closeFridge={this.closeFridge}
-            visible={this.state.fridgeVisible}
-          />
-        </div>
-      </div>
+      <div className="fridge1">
+      <Fridge
+        fridge={this.state.fridge}
+        closeFridge={this.closeFridge}
+        visible={this.state.fridgeVisible}
+      />
+    </div>
+    </div>
     );
   }
 }
+export default App;

@@ -9,10 +9,11 @@ body .sosi{
 body .container {
   font-family: Arial, Helvetica, sans-serif;
   width: 1000px;
+  padding-top: 10px;
 }
 .header {
     
-  padding-top: 40px;
+  padding-top: 30px;
   height: 80px;
 }
 .user_GridRight {
@@ -30,4 +31,11 @@ body .user_purpleAvatar {
 }
 .hidden {
   display: none;
+}
+.receipe{
+  padding: 15px 0;  
+}
+
+body .sosi .list{
+  max-width: 100%;
 }
