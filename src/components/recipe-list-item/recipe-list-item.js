@@ -7,10 +7,12 @@ class RecipeListItem extends Component {
   ShowRecipe = () => {
     this.props.history.push(`/recipe/${this.props.id}`);
   };
+  
   render() {
-    const { name, onDeleted, from } = this.props;
+    const { name, onDeleted, from ,key} = this.props;
     console.log(this.props);
     return (
+      
       <div>
         <div className="recipe-item" onClick={this.ShowRecipe}>
           <span className="recipe-list-item-label">{name}</span>
@@ -20,7 +22,7 @@ class RecipeListItem extends Component {
         <button
           type="button"
           className="btn btn-outline-danger btn-sm float-right"
-          onClick={onDeleted}
+          onClick={()=>onDeleted(key)}
         >
           <i className="fa fa-trash-o" />
         </button>

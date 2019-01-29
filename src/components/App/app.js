@@ -6,9 +6,7 @@ import Fridge from "../Fridge";
 
 
 import RecipeList from "../recipe-list"
-
 import Avatar from "@material-ui/core/Avatar";
-
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
 

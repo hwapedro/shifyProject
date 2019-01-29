@@ -30,9 +30,11 @@ class RecipeList extends Component {
   };
 
   deleteItem = id => {
-
+    
     this.setState(({recipe})=> {
-      const idx = recipe.findIndex((el) => el.id === id) + 1
+      console.log(id)
+    console.log(recipe)
+      const idx = recipe.findIndex((el) => el._id === id)
       const before = recipe.slice(0,idx)
       const after = recipe.slice(idx + 1)
       const newArray = [...before, ...after]
@@ -59,8 +61,9 @@ class RecipeList extends Component {
     });
 
     return (
-
+<div className="container">
         <div className="row">
+        
           <div className="col-md-3" />
           <div className="col-md-6">
             <div className="receipe">
@@ -70,7 +73,7 @@ class RecipeList extends Component {
 
           <div className="col-md-3" />
         </div>
-
+        </div>
     );
   }
 }

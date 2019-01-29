@@ -1,11 +1,22 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
 import "./recipe.css";
-
+import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 import Grid from "@material-ui/core/Grid";
+
+const styles = theme => ({
+  fab: {
+    margin: theme.spacing.unit
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit
+  }
+});
+
 class Recipe extends Component {
   state = {
     amount: 0,
@@ -16,6 +27,8 @@ class Recipe extends Component {
     ingredientsGlobal: []
   };
 
+  
+
   componentDidMount = async () => {
     const myHeaders = new Headers({
       "Content-Type": "application/json"
@@ -25,16 +38,15 @@ class Recipe extends Component {
       `http://germangorodnev.com:4500/recipe/${this.props.match.params.id}`,
       { method: "GET", headers: myHeaders }
     );
-    
+
     const data = await response.json();
     console.log(this.props);
 
-    const res = await fetch(
-      `http://germangorodnev.com:4500/ingredient`,
-      { method: "GET", headers: myHeaders }
-    );
+    const res = await fetch(`http://germangorodnev.com:4500/ingredient`, {
+      method: "GET",
+      headers: myHeaders
+    });
     const dataIngredient = await res.json();
-    
 
     this.setState(
       {
@@ -70,7 +82,7 @@ class Recipe extends Component {
     );
     const data = await response.json();
     console.log(data);
-    if(data.content.added){
+    if (data.content.added) {
       this.setState(
         {
           ingredients: data.content.updated.ingredients
@@ -78,33 +90,36 @@ class Recipe extends Component {
         this.forceUpdate
       );
     }
-    
   };
-
+  BackToList = () => {
+    this.props.history.push(`/`);
+  };
   render() {
-    const { recipeOne, name, ingredients ,ingredientsGlobal} = this.state;
+    const { recipeOne, name, ingredients, ingredientsGlobal } = this.state;
+    const{classes} = this.props
     console.log(ingredientsGlobal);
-    const elements = ingredients.sort((a,b)=>a.done-b.done).map(item => {
-      const { ingredient, done , ...itemProps } = item;
-      return (
-        <li key={ingredient} className="list-group-item">
-          <span className= {(done ? "" : "hidden")} >x</span>
-          <span className="col-md-3" {...itemProps} id={ingredient}>
-           {ingredientsGlobal.find((el)=>el._id === item.ingredient).name}
-          </span>
-          
-          <button
-            className="col-md-3"
-            onClick={() => {
-              this.plus(ingredient);
-            }}
-            className="ingredients_items_button"
-          >
-            +
-          </button>
-        </li>
-      );
-    });
+    const elements = ingredients
+      .sort((a, b) => a.done - b.done)
+      .map(item => {
+        const { ingredient, done, ...itemProps } = item;
+        return (
+          <li key={ingredient} className="list-group-item">
+            <span className={done ? "" : "hidden"}>x</span>
+            <span className="col-md-3" {...itemProps} id={ingredient}>
+              {ingredientsGlobal.find(el => el._id === item.ingredient).name}
+            </span>
+
+            <button
+              onClick={() => {
+                this.plus(ingredient);
+              }}
+              className={`ingredients_items_button${done ? " hidden" : ""}`}
+            >
+              +
+            </button>
+          </li>
+        );
+      });
     return (
       <div>
         <div className="container">
@@ -125,7 +140,9 @@ class Recipe extends Component {
                   </Avatar>
                 </Grid>
               </div>
-              <div className="col-md-3" />
+            </div>
+            <div className="col-md-3" />
+            <div>
               <div className="container">
                 <div className="row">
                   <div className="col-md-12">
@@ -137,10 +154,18 @@ class Recipe extends Component {
               </div>
             </div>
           </div>
+          <Fab
+                onClick={this.BackToList}
+                color="primary"
+                aria-label="Add"
+                className={`buttonFridge ${classes.fab}`}
+              >
+                <AddIcon />
+              </Fab>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(Recipe);
+export default withStyles(styles)(withRouter(Recipe));
