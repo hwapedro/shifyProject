@@ -18,11 +18,11 @@ class Shift extends React.Component {
 
   constructor(props) {
     super(props);
-    window.REMOTE = 'http://localhost:4500';
+    window.REMOTE = 'http://germangorodnev.com:4500';
     // init websocket
     // localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68");
 
-    this.client = new ws.w3cwebsocket('ws://localhost:4500/', 'echo-protocol');
+    this.client = new ws.w3cwebsocket('ws://germangorodnev.com:4500/', 'echo-protocol');
 
     this.client.onerror = () => {
       console.log('Connection Error');

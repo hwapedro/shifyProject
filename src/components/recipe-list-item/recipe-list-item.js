@@ -7,13 +7,12 @@ class RecipeListItem extends Component {
   ShowRecipe = () => {
     this.props.history.push(`/recipe/${this.props.id}`);
   };
-  
   render() {
-    const { name, onDeleted, from ,key} = this.props;
-    console.log(this.props);
+    const { name, onDeleted, from ,key,value,id,done} = this.props;
+    console.log( )
     return (
-      
-      <div>
+      <li key={id} className={`list-group-item ` + (name.indexOf(value) ? 'hidden':'')}>
+      <div className = {done ? 'recipe-item-ready':''}>
         <div className="recipe-item" onClick={this.ShowRecipe}>
           <span className="recipe-list-item-label">{name}</span>
           <br />
@@ -27,6 +26,7 @@ class RecipeListItem extends Component {
           <i className="fa fa-trash-o" />
         </button>
       </div>
+      </li>
     );
   }
 }

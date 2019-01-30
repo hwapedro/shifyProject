@@ -3,13 +3,10 @@ import React, { Component } from "react";
 import Header from "../Header";
 import Fridge from "../Fridge";
 
-
-
-import RecipeList from "../recipe-list"
+import RecipeList from "../recipe-list";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
-
 
 const styles = theme => ({
   root: {
@@ -27,8 +24,6 @@ class App extends Component {
     fridge: []
   };
 
-  
-
   componentDidMount = async () => {
     const userId =
       localStorage.getItem("userId") ||
@@ -38,10 +33,10 @@ class App extends Component {
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
-    const response = await fetch(
-      `${window.REMOTE}/user/${userId}/fridge`,
-      { method: "GET", headers: myHeaders }
-    );
+    const response = await fetch(`${window.REMOTE}/user/${userId}/fridge`, {
+      method: "GET",
+      headers: myHeaders
+    });
     const data = await response.json();
     this.setState({
       fridge: data.content.fridge
@@ -65,45 +60,55 @@ class App extends Component {
   };
 
   render() {
-    const { list } =this.state
     return (
-      <div className="sosi">
-        <div className="header">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-3" />
-              <div className="col-md-3 headColor">
-                <Header />
-              </div>
-              <div className="col-md-3 headColor">
-                <div className="user">
-                  <Grid
-                    className="user_GridRight"
-                    alignItems="center"
-                    container
-                  >
-                    <Avatar
-                      className="user_purpleAvatar"
-                      onClick={this.openFridge}
+      <div>
+        <div className="sosi">
+          <div className="header">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-3" />
+                <div className="col-md-3 headColor">
+                  <Header />
+                </div>
+                <div className="col-md-3 headColor">
+                  <div className="fridge1">
+                    <Fridge
+                      fridge={this.state.fridge}
+                      closeFridge={this.closeFridge}
+                      visible={this.state.fridgeVisible}
+                    />
+                  </div>
+                  <div className="user">
+                    <Grid
+                      className="user_GridRight"
+                      alignItems="center"
+                      container
                     >
-                      I
-                    </Avatar>
-                  </Grid>
+                      <Avatar
+                        className="user_purpleAvatar"
+                        onClick={this.openFridge}
+                      >
+                        I
+                      </Avatar>
+                    </Grid>
+                  </div>
                 </div>
               </div>
+
+              <div className="col-md-3" />
             </div>
-            <RecipeList />
-            <div className="col-md-3" />
           </div>
         </div>
-      <div className="fridge1">
-      <Fridge
-        fridge={this.state.fridge}
-        closeFridge={this.closeFridge}
-        visible={this.state.fridgeVisible}
-      />
-    </div>
-    </div>
+        <div>
+          <div className="container">
+            <div className="tow">
+              <div className="col-md-12">
+                <RecipeList />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

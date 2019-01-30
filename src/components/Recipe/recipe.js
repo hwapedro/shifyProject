@@ -97,7 +97,8 @@ class Recipe extends Component {
   render() {
     const { recipeOne, name, ingredients, ingredientsGlobal } = this.state;
     const{classes} = this.props
-    console.log(ingredientsGlobal);
+    console.log(ingredients);
+
     const elements = ingredients
       .sort((a, b) => a.done - b.done)
       .map(item => {

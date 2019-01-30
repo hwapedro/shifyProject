@@ -2,8 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 body .sosi{
-  height: 100vh;
-  background-image: url('./background54.png');
+  height: 100px;
   background-repeat: repeat;
 }
 body .container {

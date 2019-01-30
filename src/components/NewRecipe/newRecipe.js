@@ -25,7 +25,9 @@ class NewReceipe extends Component {
     selectorArray: [],
     ingredients: []
   };
-  plusRecipe = async id => {
+  plusRecipe = async () => {
+    const reqArray = this.state.ingredients.map(el => el.event);
+    console.log(reqArray);
     const userId =
       localStorage.getItem("userId") ||
       (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
@@ -33,16 +35,16 @@ class NewReceipe extends Component {
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
-    console.log(id);
     const response = await fetch(`${window.REMOTE}/recipe/`, {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
-        String: this.state.value,
+        name:  this.state.value,
         from: userId,
-        ingredients: []
+        ingredients: reqArray
       })
     });
+
     const data = await response.json();
     console.log(data);
   };
@@ -54,24 +56,23 @@ class NewReceipe extends Component {
   onDeleted = id => {
     console.log(id);
 
-    this.setState(({ selectorArray,ingredients }) => {
+    this.setState(({ selectorArray, ingredients }) => {
       let afterDeleted = [...ingredients];
-      
+
       const idx = selectorArray.findIndex(el => el.id === id);
       const before = selectorArray.slice(0, idx);
 
       const after = selectorArray.slice(idx + 1);
       const newArray = [...before, ...after];
 
-      for(let i =0; i<afterDeleted.length;i++){
-        console.log(id,afterDeleted[i].index)
-          if(id === afterDeleted[i].index){
-              
-            afterDeleted.splice(i, 1);
-          }
-    }
-      
-        console.log(afterDeleted)
+      for (let i = 0; i < afterDeleted.length; i++) {
+        console.log(id, afterDeleted[i].index);
+        if (id === afterDeleted[i].index) {
+          afterDeleted.splice(i, 1);
+        }
+      }
+
+      console.log(afterDeleted);
       return {
         ingredients: afterDeleted,
         selectorArray: newArray
@@ -98,14 +99,21 @@ class NewReceipe extends Component {
   };
 
   handleChange = event => {
-    console.log(event);
+    const reqArray = this.state.ingredients.map(el => el.event);
+    console.log({
+      body: JSON.stringify({
+        String: this.state.value,
+        from: 1,
+        ingredients: reqArray
+      })
+    });
     this.setState({ value: event.target.value });
   };
   selectorChange = (event, index) => {
     let array = [...this.state.ingredients];
 
     if (array.length !== 0) {
-        console.log(array)
+      console.log(array);
       for (let i = 0; i < array.length; i++) {
         if (index === array[i].index) {
           array.splice(i, 1, { index: index, event: event.target.value });
@@ -131,7 +139,7 @@ class NewReceipe extends Component {
     const { classes } = this.props;
     const { value, ingredientsGlobal, selectorArray } = this.state;
     const { id } = selectorArray;
-    console.log(id);
+    console.log(value);
     const ingredients = ingredientsGlobal.map(el => {
       return (
         <option value={el._id} id={el._id}>
@@ -185,7 +193,7 @@ class NewReceipe extends Component {
             {selectors}
             <button onClick={this.addSelect}>add option</button>
           </div>
-          <button>add recipe</button>
+          <button onClick={this.plusRecipe}>add recipe</button>
 
           <div className="col-md-3" />
         </div>
