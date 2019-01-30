@@ -9,9 +9,8 @@ class RecipeListItem extends Component {
   };
   render() {
     const { name, onDeleted, from ,key,value,id,done} = this.props;
-    console.log( )
     return (
-      <li key={id} className={`list-group-item ` + (name.indexOf(value) ? 'hidden':'')}>
+      <li key={id} className={`list-group-item ` + ((name.indexOf(value)==-1) ? 'hidden':'')}>
       <div className = {done ? 'recipe-item-ready':''}>
         <div className="recipe-item" onClick={this.ShowRecipe}>
           <span className="recipe-list-item-label">{name}</span>
