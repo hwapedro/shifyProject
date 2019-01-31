@@ -7,16 +7,12 @@ import "./recipe-list.css";
 
 class RecipeList extends Component {
   state = {
-    recipe: [],
-    value: ""
+    recipe: []
   };
 
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
+  
 
   componentDidMount = async () => {
-
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
@@ -25,6 +21,24 @@ class RecipeList extends Component {
       headers: myHeaders
     });
     const data = await response.json();
+    // console.log('asdasd')
+    // let ShellowCopy = {};
+    // let ArrayOfReady = [];
+    // let count = 0;
+    // for (let i = 0; i < data.content.length; i++) {
+    //   ShellowCopy = data.content[i];
+    //   console.log(ShellowCopy.ingredients.length)
+    //   for (let j = 0; j < ShellowCopy.ingredients.length; j++) {
+    //     let ShellowCopyIngredients = ShellowCopy.ingredients[j]
+    //     if (ShellowCopyIngredients.done) {
+    //       count++;
+    //     }
+
+    //   }
+    //   ArrayOfReady.push(count);
+    //   count = 0;
+    // }
+    // console.log(ArrayOfReady)
     this.setState({
       recipe: data.content
     });
@@ -48,43 +62,35 @@ class RecipeList extends Component {
   };
 
   render() {
-    const { recipe,value } = this.state;
+    const { recipe, amountReadyIngredients } = this.state;
+    const {value} = this.props
+    console.log(recipe);
     const elements = recipe.map(item => {
-    const { _id, ...itemProps } = item;
-      console.log({...itemProps})
+      const { _id, ...itemProps } = item;
       return (
-        
-          <RecipeListItem
-            value = {value}
-            {...itemProps}
-            id={_id}
-            onDeleted={() => this.deleteItem(_id)}
-          />
-
+        <RecipeListItem
+          value={value}
+          {...itemProps}
+          id={_id}
+          onDeleted={() => this.deleteItem(_id)}
+        />
       );
     });
 
     return (
-      <div className="container">
         <div className="row">
-          <div className="col-md-3" />
-          <div className="col-md-6">
-            <form action="">
-              <input
-                type="text"
-                name="name"
-                value={value}
-                onChange={this.handleChange}
-              />
-            </form>
-            <div className="receipe">
-              <ul className="list-group todo-list">{elements}</ul>
+          <div className="col-md-2" />
+          <div className="col-md-8">
+            <div className="row">
+              <div className="receipe">
+                
+                <ul className="todo-list">{elements}</ul>
+              </div>
             </div>
           </div>
-
-          <div className="col-md-3" />
+          <div className="col-md-2" />
         </div>
-      </div>
+    
     );
   }
 }

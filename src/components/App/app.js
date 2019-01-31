@@ -6,6 +6,7 @@ import Fridge from "../Fridge";
 import RecipeList from "../recipe-list";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import userLogo from "../img/user.png";
 import "./app.css";
 
 const styles = theme => ({
@@ -21,9 +22,12 @@ class App extends Component {
     fridgeVisible: false,
     succsess: true,
     error: undefined,
-    fridge: []
+    fridge: [],
+    value: ""
   };
-
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+  };
   componentDidMount = async () => {
     const userId =
       localStorage.getItem("userId") ||
@@ -60,17 +64,39 @@ class App extends Component {
   };
 
   render() {
+    const { value } = this.state;
     return (
       <div>
         <div className="sosi">
           <div className="header">
             <div className="container">
               <div className="row">
-                <div className="col-md-3" />
-                <div className="col-md-3 headColor">
+                <div className="col-md-2" />
+                <div className="col-md-2 headColor">
                   <Header />
                 </div>
-                <div className="col-md-3 headColor">
+                <div className="col-md-4 headColor">
+                  <form action="">
+                    <input
+                      className="searchRecipe"
+                      type="text"
+                      name="name"
+                      value={value}
+                      onChange={this.handleChange}
+                    />
+                  </form>
+                </div>
+
+                <div className="col-md-2">
+                  <div className="user">
+                    <img
+                      src={userLogo}
+                      width = '45px'
+                      height = '45px'
+                      className="user_purpleAvatar"
+                      onClick={this.openFridge}
+                    ></img>
+                  </div>
                   <div className="fridge1">
                     <Fridge
                       fridge={this.state.fridge}
@@ -78,24 +104,9 @@ class App extends Component {
                       visible={this.state.fridgeVisible}
                     />
                   </div>
-                  <div className="user">
-                    <Grid
-                      className="user_GridRight"
-                      alignItems="center"
-                      container
-                    >
-                      <Avatar
-                        className="user_purpleAvatar"
-                        onClick={this.openFridge}
-                      >
-                        I
-                      </Avatar>
-                    </Grid>
-                  </div>
                 </div>
+                <div className="col-md-2" />
               </div>
-
-              <div className="col-md-3" />
             </div>
           </div>
         </div>
@@ -103,7 +114,7 @@ class App extends Component {
           <div className="container">
             <div className="tow">
               <div className="col-md-12">
-                <RecipeList />
+                <RecipeList value={value} />
               </div>
             </div>
           </div>

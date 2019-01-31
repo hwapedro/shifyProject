@@ -1,8 +1,17 @@
-.list-group todo-list{
+.todo-list{
     cursor: pointer;
+    padding: 0;
 }
 .list-group-item{
     cursor: pointer;
 
 
+  }
+  .receipe{
+      width: 100%;
+  }
+  .amount-of-needs{
+      font-size: 30px;
+      float: right;
+      padding-right: 10%;
   }

@@ -35,7 +35,7 @@ class Recipe extends Component {
     });
 
     const response = await fetch(
-      `${window.REMOTE}/recipe/${this.props.match.params.id}`,
+      `${window.REMOTE}/recipe/${this.props.match.params.id}/?user=babin`,
       { method: "GET", headers: myHeaders }
     );
 
@@ -107,7 +107,9 @@ class Recipe extends Component {
           <li key={ingredient} className="list-group-item">
             <span className={done ? "" : "hidden"}>x</span>
             <span className="col-md-3" {...itemProps} id={ingredient}>
-              {ingredientsGlobal.find(el => el._id === item.ingredient).name}
+              {ingredientsGlobal.find(el => el._id === item.ingredient).name} 
+              
+
             </span>
 
             <button

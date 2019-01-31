@@ -1,25 +1,53 @@
+.recipe-list-item-label {
+  color:white;
+  margin-left: 1.25rem;
+  line-height: 35px;
+  border-radius: 30px;
+  padding: 5px 10px 5px 10px;
+  user-select: none;
+  font-size: 30px;
+  font-weight: 600;
+  /* background-color: white; */
 
-  
-  .recipe-list-item-label {
-    margin-left: 1.25rem;
-    line-height: 35px;
-    
-    user-select: none;
-  }
+}
 
-  .recipe-item{
-      
-      padding: 0;
-  }
-  
-  .who-create{
-    margin-left: 1.25rem;
-    font-size: 12px;
-    font-style: italic;
-  }
-  .btn {
-    z-index: 10;
-  }
-  .recipe-item-ready{
-    background-color: #cb97d5;
-  }
+.recipe-item {
+  padding: 0;
+  margin-top: -10px;
+}
+
+body .who-create {
+  margin-left: 1.7rem;
+  margin-top: 200px;
+  font-size: 18px;
+  font-style: italic;
+  color:white;
+}
+.btn {
+  z-index: 10;
+}
+.recipe-item-ready {
+}
+
+.list-group-items {
+  height: 130px;
+  margin-top: 16px;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  margin-left: 0;
+  list-style-type: none;
+  padding: 7% 0 0 5%;
+  background-image: url("./img/list.jpg");
+  background-size: contain;
+}
+.amount-of-needs {
+  color: white;
+  font-size: 30px;
+  float: right;
+  padding-right: 10%;
+}
+.ready-list {
+  float: right;
+  margin-right: 20px;
+  margin-top: -20px;
+}

@@ -11,10 +11,10 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Button variant="contained" color="primary" onClick={this.addRecipe}>
+        <button className = 'header-button'onClick={this.addRecipe}>
           {" "}
-          CREATE RECIPE{" "}
-        </Button>
+          ADD{" "}
+        </button>
       </div>
     );
   }

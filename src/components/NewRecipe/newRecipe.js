@@ -47,6 +47,7 @@ class NewReceipe extends Component {
 
     const data = await response.json();
     console.log(data);
+    this.props.history.push("/");
   };
   addSelect = () => {
     let array = [...this.state.selectorArray];

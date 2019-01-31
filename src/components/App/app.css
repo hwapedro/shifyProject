@@ -20,11 +20,6 @@ body .container {
   display: flex;
   justify-content: flex-end;
 }
-body .user_purpleAvatar {
-  margin: 10;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.281);
-}
 .user_purpleAvatar:hover {
   cursor: pointer;
 }
@@ -37,4 +32,23 @@ body .user_purpleAvatar {
 
 body .sosi .list{
   max-width: 100%;
+}
+.header{
+background-color: #575757;
+height: 100px;
+}
+.searchRecipe{
+  height: 30px;
+  background-color: #838383;
+  border-color: #e9e4e4b7;
+  width: 100%;
+  outline: 0;
+  border-style: solid;
+  border-width:1px;
+}
+.user_purpleAvatar{
+float: right;
+margin-top: -15px;
+margin-right: 10px;
+  background-color: none;
 }
