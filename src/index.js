@@ -58,7 +58,14 @@ class Shift extends React.Component {
             }, {
                 label: 'Перейти на страницу рецепта',
                 callback: this.makeLink(`/recipe/${d.payload.info.recipeId}`),
-              })
+              }
+            );
+          } else if (d.payload.event === 'recipeDone') {
+            this.addNotification({
+              title: 'Блюдо готово!',
+              message: `${d.payload.info.from} из ${d.payload.info.room} зовет на: ${d.payload.info.name}`,
+              level: 'success',
+            });
           }
         }
       }
@@ -71,7 +78,7 @@ class Shift extends React.Component {
     window.history.go();
   }
 
-  addNotification = (payload, action) => {
+  addNotification = (payload, action = {}) => {
     this._notificationSystem.addNotification({
       ...payload,
       action
