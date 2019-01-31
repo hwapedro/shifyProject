@@ -11,7 +11,7 @@
   top: 0;
   position: absolute;
   background-color: white;
-  margin-top: 60%;
+  margin-top: 57%;
   border-color:   rgb(51, 51, 51);
   position: relative;
 }
@@ -23,7 +23,7 @@
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
-  width: 30vw;
+  width: 19vw;
   margin-top: 10%;
 }
 
@@ -58,10 +58,10 @@
   height: 250px;
   position: fixed;
   top: 0;
-  margin-top: -60px;
+  margin-top: -49px;
   background-color: white;
   transform: translateX(-50%);
-  width: 30vw;
+  width: 19vw;
   background-color: rgb(26, 26, 26);
   border: 2px solid rgb(194, 194, 194);
 }
@@ -78,14 +78,14 @@
   top: 0;
   position: absolute;
   background-color: white;
-  margin-top: 60%;
+  margin-top: 57%;
   font-size: 20px;
   z-index: 12;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
-  width: 30vw;
+  width: 19vw;
   background-color: rgb(26, 26, 26);
   
 }
@@ -101,9 +101,9 @@
 }
 
 .closeDoor {
-  margin-left: 39%;
+  margin-left: 41%;
   border-radius: 50px;
-  margin-top: 17%;
+  margin-top: 15%;
   background-color: rgb(39, 39, 39);
   outline: none;
   border: none;
@@ -113,32 +113,4 @@
   color: white;
   position: absolute;
   z-index: 20;
-}
-.closeDoor1 {
-  margin-left: 38.5%;
-  border-radius: 50px;
-  margin-top: 16.5%;
-  background-color: rgb(255, 255, 255);
-  outline: none;
-  border: none;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-  color: white;
-  z-index: 14;
-  position: absolute;
-}
-.closeDoor2 {
-  margin-left: 37.8%;
-  border-radius: 50px;
-  margin-top: 16%;
-  background-color: rgb(39, 39, 39);
-  outline: none;
-  border: none;
-  height: 45px;
-  width: 45px;
-  cursor: pointer;
-  color: white;
-  z-index: 13;
-  position: absolute;
 }

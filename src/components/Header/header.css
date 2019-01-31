@@ -2,9 +2,9 @@
   font-size: 15px;
   background: none;
   outline: none;
-  border-color: #e9e4e4b7;
   width: 100%;
-  border: solid;
+  border: 0.5px solid #e9e4e4b7;
   color:white;
   height: 30px;
+  cursor: pointer;
 }

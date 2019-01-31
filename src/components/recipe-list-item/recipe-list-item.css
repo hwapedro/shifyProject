@@ -25,12 +25,10 @@ body .who-create {
 .btn {
   z-index: 10;
 }
-.recipe-item-ready {
-}
 
 .list-group-items {
   height: 130px;
-  margin-top: 16px;
+  margin-top: 26px;
   /* border: 1px solid black; */
   border-radius: 30px;
   margin-left: 0;

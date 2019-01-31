@@ -85,7 +85,7 @@ class App extends Component {
         </div>
         <div>
           <div className="container">
-            <div className="tow">
+            <div className="row">
               <div className="col-md-12">
                 <RecipeList value={value} />
               </div>
@@ -98,7 +98,6 @@ class App extends Component {
         </div>
         <div className="fridge1">
           <Fridge
-            
             openFridgeDoor={this.openFridgeDoor}
             openFlagDoor={this.state.openFlagDoor}
             fridge={this.state.fridge}
