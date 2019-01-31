@@ -91,17 +91,10 @@ class App extends Component {
                   <div className="user">
                     <img
                       src={userLogo}
-                      width = '45px'
-                      height = '45px'
+                      width="45px"
+                      height="45px"
                       className="user_purpleAvatar"
                       onClick={this.openFridge}
-                    ></img>
-                  </div>
-                  <div className="fridge1">
-                    <Fridge
-                      fridge={this.state.fridge}
-                      closeFridge={this.closeFridge}
-                      visible={this.state.fridgeVisible}
                     />
                   </div>
                 </div>
@@ -118,6 +111,17 @@ class App extends Component {
               </div>
             </div>
           </div>
+          <div
+            className={"Black  " + (this.state.fridgeVisible ? "" : "hidden")}
+            onClick={this.closeFridge}
+          />
+        </div>
+        <div className="fridge1">
+          <Fridge
+            fridge={this.state.fridge}
+            closeFridge={this.closeFridge}
+            visible={this.state.fridgeVisible}
+          />
         </div>
       </div>
     );

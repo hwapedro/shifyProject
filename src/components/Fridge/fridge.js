@@ -24,21 +24,24 @@ class Fridge extends Component {
   render() {
     const { classes, closeFridge, visible, fridge } = this.props;
     return (
-      <div className="cold">
-        <div className={"container  " + (visible ? "" : "hidden")}>
-          <div className="row">
-            <div className="col-md-3" />
-            <div className="col-md-6">
+      <div className={"container  " + (visible ? "" : "hidden")}>
+        <div className="row">
+          <div className="col-md-3" />
+          <div className="col-md-6">
+            <div className="cold">
               <div className="cold_fridge">
                 <b>FRIDGE</b>
                 {fridge &&
                   fridge.map((el, index) => (
-                    <div className = 'cold_fridge_item' key={index}>
+                    <div className="cold_fridge_item" key={index}>
                       {`${el.ingredient.name} шт `}
-                      <span><b>{el.amount}</b></span>
+                      <span>
+                        <b>{el.amount}</b>
+                      </span>
                     </div>
                   ))}
               </div>
+
               <Fab
                 onClick={closeFridge}
                 color="primary"
@@ -49,6 +52,7 @@ class Fridge extends Component {
               </Fab>
             </div>
           </div>
+          <div className="col-md-3" />
         </div>
       </div>
     );
