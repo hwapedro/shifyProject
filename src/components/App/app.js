@@ -30,10 +30,7 @@ class App extends Component {
     this.setState({ value: event.target.value });
   };
   componentDidMount = async () => {
-    const userId =
-      localStorage.getItem("userId") ||
-      (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
-        "5c4edc01fc79b221b47f0d68");
+    const userId = localStorage.getItem("userId");
 
     const myHeaders = new Headers({
       "Content-Type": "application/json"
@@ -98,7 +95,7 @@ class App extends Component {
         </div>
         <div className="fridge1">
           <Fridge
-            
+
             openFridgeDoor={this.openFridgeDoor}
             openFlagDoor={this.state.openFlagDoor}
             fridge={this.state.fridge}

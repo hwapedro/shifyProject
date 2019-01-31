@@ -16,7 +16,7 @@ const styles = theme => ({
 });
 
 class NewReceipe extends Component {
-  addRecipe = () => {};
+  addRecipe = () => { };
   maxId = 1;
   state = {
     value: "",
@@ -28,10 +28,7 @@ class NewReceipe extends Component {
   plusRecipe = async () => {
     const reqArray = this.state.ingredients.map(el => el.event);
     console.log(reqArray);
-    const userId =
-      localStorage.getItem("userId") ||
-      (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
-        "5c4edc01fc79b221b47f0d68");
+    const userId = localStorage.getItem("userId");
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
@@ -39,7 +36,7 @@ class NewReceipe extends Component {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
-        name:  this.state.value,
+        name: this.state.value,
         from: userId,
         ingredients: reqArray
       })
