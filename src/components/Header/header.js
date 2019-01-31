@@ -11,7 +11,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <button className = 'header-button'onClick={this.addRecipe}>
+        <button className = 'header-button' onClick={this.addRecipe}>
           {" "}
           ADD{" "}
         </button>

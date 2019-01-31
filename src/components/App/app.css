@@ -1,10 +1,12 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color:#363636;
 }
 body .sosi{
   height: 100px;
   background-repeat: repeat;
 }
+
 body .container {
   font-family: Arial, Helvetica, sans-serif;
   width: 1000px;
@@ -34,12 +36,12 @@ body .sosi .list{
   max-width: 100%;
 }
 .header{
-background-color: #575757;
+background-color:#2a2a2a;
 height: 100px;
 }
 .searchRecipe{
   height: 30px;
-  background-color: #838383;
+  background-color: #00000044;
   border-color: #e9e4e4b7;
   width: 100%;
   outline: 0;

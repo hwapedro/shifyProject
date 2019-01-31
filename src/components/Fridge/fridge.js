@@ -22,15 +22,30 @@ class Fridge extends Component {
   };
 
   render() {
-    const { classes, closeFridge, visible, fridge } = this.props;
+    const {
+      classes,
+      closeFridge,
+      visible,
+      fridge,
+      openFlagDoor,
+      openFridgeDoor
+    } = this.props;
     return (
       <div className={"container  " + (visible ? "" : "hidden")}>
         <div className="row">
-          <div className="col-md-3" />
-          <div className="col-md-6">
+          <div className="col-md-4" />
+          <div className="col-md-4">
             <div className="cold">
+              <div className="topOfFridge">
+                <button className="openDoor" />
+              </div>
               <div className="cold_fridge">
-                <b>FRIDGE</b>
+                <div
+                  className={"doorOfFridge " + (openFlagDoor ? "hidden" : "")}
+                >
+                  <button className="openDoor" onClick={openFridgeDoor} />
+                </div>
+
                 {fridge &&
                   fridge.map((el, index) => (
                     <div className="cold_fridge_item" key={index}>
@@ -40,19 +55,24 @@ class Fridge extends Component {
                       </span>
                     </div>
                   ))}
+                <button
+                  className={"closeDoor1 " + (openFlagDoor ? "" : "hidden")}
+                  onClick={openFridgeDoor}
+                />
+                <button
+                  className={"closeDoor2 " + (openFlagDoor ? "" : "hidden")}
+                  onClick={openFridgeDoor}
+                />
+                <button
+                  className={"closeDoor " + (openFlagDoor ? "" : "hidden")}
+                  onClick={openFridgeDoor}
+                >
+                  x
+                </button>
               </div>
-
-              <Fab
-                onClick={closeFridge}
-                color="primary"
-                aria-label="Add"
-                className={`buttonFridge ${classes.fab}`}
-              >
-                <AddIcon />
-              </Fab>
             </div>
           </div>
-          <div className="col-md-3" />
+          <div className="col-md-4" />
         </div>
       </div>
     );

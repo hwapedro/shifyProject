@@ -1,5 +1,5 @@
 .recipe-list-item-label {
-  color:white;
+  color: white;
   margin-left: 1.25rem;
   line-height: 35px;
   border-radius: 30px;
@@ -8,7 +8,6 @@
   font-size: 30px;
   font-weight: 600;
   /* background-color: white; */
-
 }
 
 .recipe-item {
@@ -17,11 +16,11 @@
 }
 
 body .who-create {
-  margin-left: 1.7rem;
+  margin-left: 2rem;
   margin-top: 200px;
   font-size: 18px;
   font-style: italic;
-  color:white;
+  color: white;
 }
 .btn {
   z-index: 10;
@@ -37,7 +36,7 @@ body .who-create {
   margin-left: 0;
   list-style-type: none;
   padding: 7% 0 0 5%;
-  background-image: url("./img/list.jpg");
+  background-image: url("./img/list1.jpg");
   background-size: contain;
 }
 .amount-of-needs {

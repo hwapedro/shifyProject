@@ -23,7 +23,8 @@ class App extends Component {
     succsess: true,
     error: undefined,
     fridge: [],
-    value: ""
+    value: "",
+    openFlagDoor: false
   };
   handleChange = event => {
     this.setState({ value: event.target.value });
@@ -59,7 +60,14 @@ class App extends Component {
 
   closeFridge = () => {
     this.setState({
-      fridgeVisible: false
+      fridgeVisible: false,
+      openFlagDoor: !this.state.openFlagDoor
+    });
+  };
+
+  openFridgeDoor = () => {
+    this.setState({
+      openFlagDoor: !this.state.openFlagDoor
     });
   };
 
@@ -118,6 +126,8 @@ class App extends Component {
         </div>
         <div className="fridge1">
           <Fridge
+            openFridgeDoor = {this.openFridgeDoor}
+            openFlagDoor={this.state.openFlagDoor}
             fridge={this.state.fridge}
             closeFridge={this.closeFridge}
             visible={this.state.fridgeVisible}

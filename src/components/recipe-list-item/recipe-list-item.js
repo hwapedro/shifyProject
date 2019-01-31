@@ -39,6 +39,7 @@ class RecipeListItem extends Component {
     return (
       <li
         key={id}
+        onClick={this.ShowRecipe}
         className={
           `list-group-items ` + (name.indexOf(value) == -1 ? "hidden" : "")
         }
@@ -46,8 +47,8 @@ class RecipeListItem extends Component {
         <div className="col-md-12">
           <div className="row">
             <div className="col-md-10">
-              <div className={done ? "recipe-item-ready" : ""}>
-                <div className="recipe-item" onClick={this.ShowRecipe}>
+              <div className={done ? "recipe-item-ready" : ""} >
+                <div className="recipe-item" >
                   <span className="recipe-list-item-label">{name}</span>
                   <br />
                   <span className="who-create">{`${from.name} `}</span>
