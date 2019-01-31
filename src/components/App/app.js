@@ -6,7 +6,7 @@ import Fridge from "../Fridge";
 import RecipeList from "../recipe-list";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import userLogo from "../img/user.png";
+
 import "./app.css";
 
 const styles = theme => ({
@@ -61,7 +61,7 @@ class App extends Component {
   closeFridge = () => {
     this.setState({
       fridgeVisible: false,
-      openFlagDoor: !this.state.openFlagDoor
+      openFlagDoor: false
     });
   };
 
@@ -76,40 +76,12 @@ class App extends Component {
     return (
       <div>
         <div className="sosi">
-          <div className="header">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-2" />
-                <div className="col-md-2 headColor">
-                  <Header />
-                </div>
-                <div className="col-md-4 headColor">
-                  <form action="">
-                    <input
-                      className="searchRecipe"
-                      type="text"
-                      name="name"
-                      value={value}
-                      onChange={this.handleChange}
-                    />
-                  </form>
-                </div>
-
-                <div className="col-md-2">
-                  <div className="user">
-                    <img
-                      src={userLogo}
-                      width="45px"
-                      height="45px"
-                      className="user_purpleAvatar"
-                      onClick={this.openFridge}
-                    />
-                  </div>
-                </div>
-                <div className="col-md-2" />
-              </div>
-            </div>
-          </div>
+          <Header
+            value={value}
+            addRecipe={this.addRecipe}
+            handleChange={this.handleChange}
+            openFridge={this.openFridge}
+          />
         </div>
         <div>
           <div className="container">
@@ -126,7 +98,8 @@ class App extends Component {
         </div>
         <div className="fridge1">
           <Fridge
-            openFridgeDoor = {this.openFridgeDoor}
+            
+            openFridgeDoor={this.openFridgeDoor}
             openFlagDoor={this.state.openFlagDoor}
             fridge={this.state.fridge}
             closeFridge={this.closeFridge}
