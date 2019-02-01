@@ -45,7 +45,7 @@ class RecipeListItem extends Component {
       >
         <div className="col-md-12">
           <div className="row">
-            <div className="col-md-10">
+            <div className="col-md-9">
               <div className={done ? "recipe-item-ready" : ""} >
                 <div className="recipe-item" >
                   <span className="recipe-list-item-label">{name}</span>
@@ -63,7 +63,7 @@ class RecipeListItem extends Component {
                 
                 </button> */}
 
-            <div className="col-md-2">
+            <div className="col-md-3">
               <span
                 className={
                   amountReadyIngredients === ingredients.length
