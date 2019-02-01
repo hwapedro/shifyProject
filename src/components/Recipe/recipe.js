@@ -89,9 +89,7 @@ class Recipe extends Component {
   };
   plus = async id => {
     const userId =
-      localStorage.getItem("userId") ||
-      (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
-        "5c4edc01fc79b221b47f0d68");
+      localStorage.getItem("userId");
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });

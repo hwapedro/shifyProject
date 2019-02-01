@@ -8,7 +8,7 @@ import gif from "../img/gif12.gif";
 import "./newRecipe.css";
 
 class NewReceipe extends Component {
-  addRecipe = () => {};
+  addRecipe = () => { };
   maxId = 1;
   state = {
     value: "",
@@ -26,10 +26,7 @@ class NewReceipe extends Component {
       if (this.state.ingredients.length !== 0) {
         const reqArray = this.state.ingredients.map(el => el.event);
         console.log(reqArray);
-        const userId =
-          localStorage.getItem("userId") ||
-          (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
-            "5c4edc01fc79b221b47f0d68");
+        const userId = localStorage.getItem("userId") 
         const myHeaders = new Headers({
           "Content-Type": "application/json"
         });

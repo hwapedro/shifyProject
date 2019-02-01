@@ -8,6 +8,8 @@ import App from "./components/App";
 import Recipe from "./components/Recipe";
 import Notificator from './components/Nsys';
 import ws from 'websocket';
+import LoginScreen from './components/LoginScreen';
+import RegistrationStreen from './components/RegistrationStreen';
 
 class Shift extends React.Component {
   state = {
@@ -19,9 +21,10 @@ class Shift extends React.Component {
   constructor(props) {
     super(props);
     window.REMOTE = 'http://germangorodnev.com:4500';
+    // window.REMOTE = 'http://localhost:4500';
+    window.addNotification = this.addNotification;
     // init websocket
     // localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68");
-
     this.client = new ws.w3cwebsocket('ws://germangorodnev.com:4500/', 'echo-protocol');
 
     this.client.onerror = () => {
@@ -73,6 +76,17 @@ class Shift extends React.Component {
 
   }
 
+  componentDidMount() {
+    if (!localStorage.getItem('userId')
+      && window.location.pathname !== '/login'
+        && window.location.pathname !== '/register') {
+      // pass to login
+      window.history.pushState({}, "", '/login');
+      window.history.go();
+      return;
+    }
+  }
+
   makeLink = (l) => () => {
     window.history.pushState({}, "", l);
     window.history.go();
@@ -97,8 +111,8 @@ class Shift extends React.Component {
             <Route path="/" exact component={App} />
             <Route path="/newRecipe" component={NewRecipe} />
             <Route path="/recipe/:id" component={Recipe} />
-            <Route path="/register" component={NewRecipe} />
-            <Route path="/login" component={NewRecipe} />
+            <Route path="/register" component={RegistrationStreen} />
+            <Route path="/login" component={LoginScreen} />
           </Switch>
         </Router>
         <Notificator cb={this.getNotificator} />
