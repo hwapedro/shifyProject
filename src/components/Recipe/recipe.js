@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./recipe.css";
 import Fridge from "../Fridge";
-import { withStyles } from "@material-ui/core/styles";
+
 import userLogo from "../img/user.png";
 import gif from "../img/gif12.gif";
 import ready from "../img/read.png";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+
 
 class Recipe extends Component {
   state = {
@@ -96,7 +95,7 @@ class Recipe extends Component {
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
-    console.log(id);
+    console.log(this.props.match.params.id);
     const response = await fetch(
       `${window.REMOTE}/recipe/${this.props.match.params.id}`,
       {
@@ -210,7 +209,7 @@ class Recipe extends Component {
                     <img src={gif} alt="" />
                   </div>
                   <div className="goToMenu">
-                    <button onClick={this.BackToList}>ГЛАВНОЕ МЕНЮ</button>
+                    <button onClick={this.BackToList}>MAIN MENU</button>
                   </div>
                 </div>
               </div>

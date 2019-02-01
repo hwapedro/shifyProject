@@ -2,7 +2,7 @@
   float: right;
 }
 .recipe-header {
-  background-color: #161616;
+  background-color: #2a2a2a;
   padding-top: 30px;
   height: 100px;
 }
@@ -21,10 +21,7 @@
   margin-left: 1px;
   line-height: 0em;
 }
-.recipe-gif {
-}
-.recipe-gif img {
-}
+
 .recipe-item2 {
   color: white;
   margin-top: 40px;
@@ -78,18 +75,18 @@
   z-index: 5;
   top: 0;
   transform: translateX(-50%);
-  margin-top: 35%;
+  margin-top: 34%;
   margin-left: 13%;
   overflow: hidden;
 }
 .goToMenu button {
-  
   color: #8e4c4d;
   border: 1px solid #8e4c4d;
   height: 3em;
   width: 12em;
-  background-color:#2a2a2a;
+  background-color: #2a2a2a;
   border-radius: 20px;
-  outline:none;
+  outline: none;
   cursor: pointer;
 }
+

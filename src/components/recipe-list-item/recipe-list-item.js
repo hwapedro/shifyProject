@@ -11,7 +11,6 @@ class RecipeListItem extends Component {
     this.props.history.push(`/recipe/${this.props.id}`);
   };
   componentDidMount = async () => {
-    let ArrayOfReady = [];
     let count = 0;
     console.log(this.props.ingredients.length);
     for (let j = 0; j < this.props.ingredients.length; j++) {

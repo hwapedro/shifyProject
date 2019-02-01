@@ -21,24 +21,7 @@ class RecipeList extends Component {
       headers: myHeaders
     });
     const data = await response.json();
-    // console.log('asdasd')
-    // let ShellowCopy = {};
-    // let ArrayOfReady = [];
-    // let count = 0;
-    // for (let i = 0; i < data.content.length; i++) {
-    //   ShellowCopy = data.content[i];
-    //   console.log(ShellowCopy.ingredients.length)
-    //   for (let j = 0; j < ShellowCopy.ingredients.length; j++) {
-    //     let ShellowCopyIngredients = ShellowCopy.ingredients[j]
-    //     if (ShellowCopyIngredients.done) {
-    //       count++;
-    //     }
-
-    //   }
-    //   ArrayOfReady.push(count);
-    //   count = 0;
-    // }
-    // console.log(ArrayOfReady)
+    console.log(data.content)
     this.setState({
       recipe: data.content
     });

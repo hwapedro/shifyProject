@@ -1,0 +1,121 @@
+.form-new-recipe {
+}
+
+.form-new-recipe label {
+  color: white;
+  font-size: 25px;
+}
+.warning {
+  padding: 10px 10px;
+  left: 50%;
+  border-radius: 20px;
+
+  height: 80px;
+  position: fixed;
+  top: 10px;
+  background-color: white;
+  transform: translateX(-50%);
+  width: 19vw;
+  background-color: #363636;
+  border: 3px solid #8e4c4d;
+  z-index: 20;
+  text-align: center;
+  color: #8e4c4d;
+  font-size: 18px;
+  padding-top: 25px;
+}
+.select-item {
+    background-color: #2a2a2a;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 40px;
+  text-align: center;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+}
+.all-select {
+  margin-top: 15px;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+.deleteOptionButton {
+  font-size: 25px;
+  background: none;
+  outline: none;
+  padding-bottom: 10px;
+  border: 0.5px solid #e9e4e4b7;
+  color: white;
+  height: 42px;
+  float: right;
+  width: 42px;
+  cursor: pointer;
+}
+.deleteOptionButton option {
+  text-align: center;
+  /* reset to left*/
+  
+}
+.yourNameRecipe:focus {outline:0;}
+
+select option {
+    border-radius: 50px;
+  margin: 40px;
+  background-color: #2a2a2a;
+
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.yournewrecipe label span{
+    font-size: 31.4px;
+    text-align: center;
+    outline: none;
+  }
+
+.yourNameRecipe{
+    width: 300px;
+    background-color: #363636;
+    color: white;
+    border: 1px solid #e9e4e4b7;
+    padding-left: 5px;
+}
+.confirmRecipe{
+    position: fixed;
+    font-size: 20px;
+    z-index: 5;
+    top: 0;
+    transform: translateX(-50%);
+    margin-top: 30%;
+    margin-left: 13%;
+    overflow: hidden;
+}
+.confirmRecipe button {
+    color: #4c8e60;
+  border: 1px solid #4c8e60;
+  height: 3em;
+  width: 12em;
+  background-color: #2a2a2a;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+}
+.addRecipeIngredients button{
+    color: #8e6f4c;
+  border: 1px solid #8e6f4c;
+  height: 3em;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #2a2a2a;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+}
