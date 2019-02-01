@@ -25,7 +25,6 @@ class NewReceipe extends Component {
       
       if (this.state.ingredients.length !== 0) {
         const reqArray = this.state.ingredients.map(el => el.event);
-        console.log(reqArray);
         const userId = localStorage.getItem("userId") 
         const myHeaders = new Headers({
           "Content-Type": "application/json"
@@ -41,11 +40,9 @@ class NewReceipe extends Component {
         });
 
         const data = await response.json();
-        console.log(data);
         this.props.history.push("/");
       } else { 
         
-        console.log('это массив ' + this.state.ingredients)
         if (this.state.warningErorr !== true) {
           this.setState({
             warningErorrRecipe: !this.state.warningErorrRecipe
@@ -59,7 +56,6 @@ class NewReceipe extends Component {
         }
       }
     } else {
-      console.log(this.state.value);
       if (this.state.warningErorr !== true) {
         this.setState({
           warningErorr: !this.state.warningErorr
@@ -97,7 +93,7 @@ class NewReceipe extends Component {
     this.setState({ selectorArray: array });
   };
   onDeleted = id => {
-    console.log(id);
+
 
     this.setState(({ selectorArray, ingredients }) => {
       let afterDeleted = [...ingredients];
@@ -109,13 +105,10 @@ class NewReceipe extends Component {
       const newArray = [...before, ...after];
 
       for (let i = 0; i < afterDeleted.length; i++) {
-        console.log(id, afterDeleted[i].index);
         if (id === afterDeleted[i].index) {
           afterDeleted.splice(i, 1);
         }
       }
-
-      console.log(afterDeleted);
       return {
         ingredients: afterDeleted,
         selectorArray: newArray
@@ -164,16 +157,13 @@ class NewReceipe extends Component {
     let array = [...this.state.ingredients];
 
     if (array.length !== 0) {
-      console.log(array);
       for (let i = 0; i < array.length; i++) {
         if (index === array[i].index) {
           array.splice(i, 1, { index: index, event: event.target.value });
           break;
         } else if (i === array.length - 1) {
-          {
             array.push({ index: index, event: event.target.value });
             break;
-          }
         }
       }
     } else {
@@ -194,11 +184,10 @@ class NewReceipe extends Component {
       warningErorr,
       warningErorrRecipe
     } = this.state;
-    const { id } = selectorArray;
-    console.log(value);
+    // const { id } = selectorArray;
     const ingredients = ingredientsGlobal.map(el => {
       return (
-        <option className="select-option" value={el._id} id={el._id}>
+        <option className="select-option" value={el._id} id={el._id} key={el._id}>
           {el.name}
         </option>
       );
@@ -238,6 +227,7 @@ class NewReceipe extends Component {
               <div className="col-md-2">
                 <div className="user-recipe">
                   <img
+                    alt='Logo'
                     src={userLogo}
                     width="45px"
                     height="45px"

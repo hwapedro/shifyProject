@@ -4,9 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import "./fridge.css";
 
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-
 const styles = theme => ({
   fab: {
     margin: theme.spacing.unit
@@ -21,10 +18,15 @@ class Fridge extends Component {
     ingridients: []
   };
 
+  logOut = () => {
+    localStorage.clear();
+    window.history.pushState({}, "", "/login");
+    window.history.go();
+  };
+
   render() {
     const {
-      classes,
-      closeFridge,
+      // closeFridge,
       visible,
       fridge,
       openFlagDoor,
@@ -36,12 +38,15 @@ class Fridge extends Component {
           <div className="col-md-4" />
           <div className="col-md-4">
             <div className="cold">
+              <div className="logOut" onClick={this.logOut}>
+                LOG OUT
+              </div>
               <div className="topOfFridge">
                 <button className="openDoor" />
               </div>
               <div className="cold_fridge">
                 <div
-                 onClick={openFridgeDoor}
+                  onClick={openFridgeDoor}
                   className={"doorOfFridge " + (openFlagDoor ? "hidden" : "")}
                 >
                   <button className="openDoor" />
@@ -56,7 +61,7 @@ class Fridge extends Component {
                       </span>
                     </div>
                   ))}
-               
+
                 <button
                   className={"closeDoor " + (openFlagDoor ? "" : "hidden")}
                   onClick={openFridgeDoor}

@@ -1,5 +1,25 @@
+
 .login-form {
     padding: 1rem;
     background-color: #ececec;
+    margin-top: 100%;
     border-radius: 1rem;
-}
+    margin-top: 200px;
+  }
+   text-field:focus{
+      color: black;
+  }
+  
+  .logButtonForReg {
+     box-shadow: 2px 2px rgba(150,150,150,0.5);
+     color: #4c8e60;
+     border: 1px solid #4c8e60;
+     height: 40px;
+     width: 100%;
+     font-size: 15px;
+     background-color: #2a2a2a;
+     border-radius: 20px;
+     outline: none;
+     margin-top: 10px;
+     cursor: pointer;
+   }

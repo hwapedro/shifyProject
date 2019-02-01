@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
 import "./header.css";
 import userLogo from "../img/user.png";
@@ -41,6 +40,7 @@ class Header extends Component {
           <div className="col-md-2">
             <div className="user">
               <img
+                alt='Logo'
                 src={userLogo}
                 width="45px"
                 height="45px"

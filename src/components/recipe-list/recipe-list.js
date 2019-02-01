@@ -21,7 +21,7 @@ class RecipeList extends Component {
       headers: myHeaders
     });
     const data = await response.json();
-    console.log(data.content)
+
     this.setState({
       recipe: data.content
     });
@@ -29,14 +29,13 @@ class RecipeList extends Component {
 
   deleteItem = id => {
     this.setState(({ recipe }) => {
-      console.log(id);
-      console.log(recipe);
+
       const idx = recipe.findIndex(el => el._id === id);
       const before = recipe.slice(0, idx);
       const after = recipe.slice(idx + 1);
       const newArray = [...before, ...after];
 
-      console.log(idx);
+
 
       return {
         recipe: newArray
@@ -45,15 +44,16 @@ class RecipeList extends Component {
   };
 
   render() {
-    const { recipe, amountReadyIngredients } = this.state;
+    const { recipe } = this.state;
     const {value} = this.props
-    console.log(recipe);
+
     const elements = recipe.map(item => {
       const { _id, ...itemProps } = item;
       return (
         <RecipeListItem
           value={value}
           {...itemProps}
+          key ={_id}
           id={_id}
           onDeleted={() => this.deleteItem(_id)}
         />

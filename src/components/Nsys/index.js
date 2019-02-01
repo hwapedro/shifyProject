@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-import { withRouter } from "react-router-dom";
 import NotificationSystem from 'react-notification-system';
 
 class Notificator extends Component {

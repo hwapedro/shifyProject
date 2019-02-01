@@ -7,7 +7,6 @@ import userLogo from "../img/user.png";
 import gif from "../img/gif12.gif";
 import ready from "../img/read.png";
 
-
 class Recipe extends Component {
   state = {
     amount: 0,
@@ -20,7 +19,8 @@ class Recipe extends Component {
     openFlagDoor: false,
     fridge: [],
     room: "",
-    goAnime: false
+    goAnime: false,
+    warningErorrRecipe: false
   };
 
   componentDidMount = async () => {
@@ -49,7 +49,7 @@ class Recipe extends Component {
     const dataFridge = await responseFridge.json();
 
     const data = await response.json();
-    console.log(data.content);
+
     const res = await fetch(`${window.REMOTE}/ingredient`, {
       method: "GET",
       headers: myHeaders
@@ -88,12 +88,11 @@ class Recipe extends Component {
     });
   };
   plus = async id => {
-    const userId =
-      localStorage.getItem("userId");
+    const userId = localStorage.getItem("userId");
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
-    console.log(this.props.match.params.id);
+
     const response = await fetch(
       `${window.REMOTE}/recipe/${this.props.match.params.id}`,
       {
@@ -107,7 +106,6 @@ class Recipe extends Component {
       }
     );
     const data = await response.json();
-    console.log(data);
     if (data.content.added) {
       this.setState(
         {
@@ -115,6 +113,18 @@ class Recipe extends Component {
         },
         this.forceUpdate
       );
+    } else {
+      if (this.state.warningErorr !== true) {
+        this.setState({
+          warningErorrRecipe: !this.state.warningErorrRecipe
+        });
+
+        setTimeout(() => {
+          this.setState({
+            warningErorrRecipe: !this.state.warningErorrRecipe
+          });
+        }, 1000);
+      }
     }
   };
   BackToList = () => {
@@ -128,10 +138,9 @@ class Recipe extends Component {
       room,
       ingredients,
       ingredientsGlobal,
-      goAnime
+      warningErorrRecipe
     } = this.state;
-    const { classes } = this.props;
-    console.log(ingredients);
+
 
     const elements = ingredients
       .sort((a, b) => a.done - b.done)
@@ -150,7 +159,6 @@ class Recipe extends Component {
               <img width="30px" height="30px" src={ready} alt="" />
             </span>
             <button
-              class
               onClick={() => {
                 this.plus(ingredient);
               }}
@@ -180,6 +188,7 @@ class Recipe extends Component {
               <div className="col-md-2">
                 <div className="user-recipe">
                   <img
+                    alt="Logo"
                     src={userLogo}
                     width="45px"
                     height="45px"
@@ -230,6 +239,9 @@ class Recipe extends Component {
                 closeFridge={this.closeFridge}
                 visible={this.state.fridgeVisible}
               />
+            </div>
+            <div className={"warning " + (warningErorrRecipe ? "" : "hidden")}>
+              NOT ENOUGH INGREDIANTS
             </div>
           </div>
         </div>

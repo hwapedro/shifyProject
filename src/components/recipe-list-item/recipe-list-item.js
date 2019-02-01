@@ -12,7 +12,7 @@ class RecipeListItem extends Component {
   };
   componentDidMount = async () => {
     let count = 0;
-    console.log(this.props.ingredients.length);
+
     for (let j = 0; j < this.props.ingredients.length; j++) {
       let ShellowCopyIngredients = this.props.ingredients[j];
       if (ShellowCopyIngredients.done) {
@@ -27,9 +27,9 @@ class RecipeListItem extends Component {
     const { amountReadyIngredients } = this.state;
     const {
       name,
-      onDeleted,
+      // onDeleted,
       from,
-      key,
+      // key,
       value,
       id,
       done,
@@ -40,7 +40,7 @@ class RecipeListItem extends Component {
         key={id}
         onClick={this.ShowRecipe}
         className={
-          `list-group-items ` + ((name.toLowerCase()).indexOf(value.toLowerCase()) == -1 ? "hidden" : "")
+          `list-group-items ` + ((name.toLowerCase()).indexOf(value.toLowerCase()) === -1 ? "hidden" : "")
         }
       >
         <div className="col-md-12">
@@ -71,7 +71,7 @@ class RecipeListItem extends Component {
                     : "amount-of-needs"
                 }
               >{`${amountReadyIngredients} / ${ingredients.length}`}</span>
-              <img src = {check} height = '80px' width = '90px'
+              <img alt='ready' src = {check} height = '80px' width = '90px'
                 className={
                   amountReadyIngredients === ingredients.length
                     ? "ready-list"

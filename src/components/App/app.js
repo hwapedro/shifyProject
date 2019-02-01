@@ -4,20 +4,20 @@ import Header from "../Header";
 import Fridge from "../Fridge";
 
 import RecipeList from "../recipe-list";
-import Avatar from "@material-ui/core/Avatar";
-import Grid from "@material-ui/core/Grid";
 
 import "./app.css";
 
-const styles = theme => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  }
-});
-
 class App extends Component {
+  constructor() {
+
+    super();
+    console.log(localStorage.getItem('userId') )
+    if(localStorage.getItem('userId') === null ){
+    window.history.pushState({}, "", '/login');
+    window.history.go();
+    }
+    
+   }
   state = {
     fridgeVisible: false,
     succsess: true,
