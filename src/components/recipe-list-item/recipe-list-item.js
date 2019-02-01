@@ -40,7 +40,7 @@ class RecipeListItem extends Component {
         key={id}
         onClick={this.ShowRecipe}
         className={
-          `list-group-items ` + (name.indexOf(value) == -1 ? "hidden" : "")
+          `list-group-items ` + ((name.toLowerCase()).indexOf(value.toLowerCase()) == -1 ? "hidden" : "")
         }
       >
         <div className="col-md-12">
