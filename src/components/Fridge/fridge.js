@@ -55,14 +55,7 @@ class Fridge extends Component {
                       </span>
                     </div>
                   ))}
-                <button
-                  className={"closeDoor1 " + (openFlagDoor ? "" : "hidden")}
-                  onClick={openFridgeDoor}
-                />
-                <button
-                  className={"closeDoor2 " + (openFlagDoor ? "" : "hidden")}
-                  onClick={openFridgeDoor}
-                />
+               
                 <button
                   className={"closeDoor " + (openFlagDoor ? "" : "hidden")}
                   onClick={openFridgeDoor}

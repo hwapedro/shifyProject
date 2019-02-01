@@ -1,21 +1,12 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./recipe.css";
-import { withStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import Fridge from "../Fridge";
 
-import Grid from "@material-ui/core/Grid";
+import userLogo from "../img/user.png";
+import gif from "../img/gif12.gif";
+import ready from "../img/read.png";
 
-const styles = theme => ({
-  fab: {
-    margin: theme.spacing.unit
-  },
-  extendedIcon: {
-    marginRight: theme.spacing.unit
-  }
-});
 
 class Recipe extends Component {
   state = {
@@ -24,12 +15,20 @@ class Recipe extends Component {
     name: "",
     ingredients: [],
     id: "",
-    ingredientsGlobal: []
+    ingredientsGlobal: [],
+    fridgeVisible: false,
+    openFlagDoor: false,
+    fridge: [],
+    room: "",
+    goAnime: false
   };
 
-  
-
   componentDidMount = async () => {
+    const userId =
+      localStorage.getItem("userId") ||
+      (localStorage.setItem("userId", "5c4edc01fc79b221b47f0d68") ||
+        "5c4edc01fc79b221b47f0d68");
+
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
@@ -39,9 +38,18 @@ class Recipe extends Component {
       { method: "GET", headers: myHeaders }
     );
 
-    const data = await response.json();
-    console.log(this.props);
+    const responseFridge = await fetch(
+      `${window.REMOTE}/user/${userId}/fridge`,
+      {
+        method: "GET",
+        headers: myHeaders
+      }
+    );
 
+    const dataFridge = await responseFridge.json();
+
+    const data = await response.json();
+    console.log(data.content);
     const res = await fetch(`${window.REMOTE}/ingredient`, {
       method: "GET",
       headers: myHeaders
@@ -50,22 +58,42 @@ class Recipe extends Component {
 
     this.setState(
       {
+        fridge: dataFridge.content.fridge,
         ingredientsGlobal: dataIngredient.content,
         recipeOne: data.content,
         name: data.content.from.name,
-        ingredients: data.content.ingredients
+        ingredients: data.content.ingredients,
+        room: data.content.from.room
       },
       this.forceUpdate
     );
   };
 
+  openFridge = () => {
+    this.setState({
+      fridgeVisible: true
+    });
+  };
+
+  closeFridge = () => {
+    this.setState({
+      fridgeVisible: false,
+      openFlagDoor: false
+    });
+  };
+
+  openFridgeDoor = () => {
+    this.setState({
+      openFlagDoor: !this.state.openFlagDoor
+    });
+  };
   plus = async id => {
     const userId =
       localStorage.getItem("userId");
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
-    console.log(id);
+    console.log(this.props.match.params.id);
     const response = await fetch(
       `${window.REMOTE}/recipe/${this.props.match.params.id}`,
       {
@@ -92,9 +120,17 @@ class Recipe extends Component {
   BackToList = () => {
     this.props.history.push(`/`);
   };
+
   render() {
-    const { recipeOne, name, ingredients, ingredientsGlobal } = this.state;
-    const{classes} = this.props
+    const {
+      recipeOne,
+      name,
+      room,
+      ingredients,
+      ingredientsGlobal,
+      goAnime
+    } = this.state;
+    const { classes } = this.props;
     console.log(ingredients);
 
     const elements = ingredients
@@ -102,15 +138,19 @@ class Recipe extends Component {
       .map(item => {
         const { ingredient, done, ...itemProps } = item;
         return (
-          <li key={ingredient} className="list-group-item">
-            <span className={done ? "" : "hidden"}>x</span>
-            <span className="col-md-3" {...itemProps} id={ingredient}>
-              {ingredientsGlobal.find(el => el._id === item.ingredient).name} 
-              
-
+          <li key={ingredient} className="recipe-item2">
+            <span
+              className="recipe-item-name-span"
+              {...itemProps}
+              id={ingredient}
+            >
+              {ingredientsGlobal.find(el => el._id === item.ingredient).name}
             </span>
-
+            <span className={done ? "recipe-ing-ready" : "hidden"}>
+              <img width="30px" height="30px" src={ready} alt="" />
+            </span>
             <button
+              class
               onClick={() => {
                 this.plus(ingredient);
               }}
@@ -123,50 +163,79 @@ class Recipe extends Component {
       });
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3" />
-            <div className="col-md-3 headColor">
-              <h1>{recipeOne && recipeOne.name}</h1>
-              <h2>{recipeOne && name}</h2>
-            </div>
-            <div className="col-md-3 headColor">
-              <div className="user">
-                <Grid className="user_GridRight" alignItems="center" container>
-                  <Avatar
+        <div className="recipe-header">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-2" />
+              <div className="col-md-6 ">
+                <div className="headName">
+                  <h1 className="h1nameOfRecipe">
+                    {recipeOne && recipeOne.name}
+                  </h1>
+                  <h2 className="h2whoCreatedRecipe">
+                    {recipeOne && name} {recipeOne && room}
+                  </h2>
+                </div>
+              </div>
+              <div className="col-md-2">
+                <div className="user-recipe">
+                  <img
+                    src={userLogo}
+                    width="45px"
+                    height="45px"
                     className="user_purpleAvatar"
                     onClick={this.openFridge}
-                  >
-                    I
-                  </Avatar>
-                </Grid>
+                  />
+                </div>
               </div>
+              <div className="col-md-2" />
             </div>
-            <div className="col-md-3" />
-            <div>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-12">
-                    <div>
-                      <ul className="ingredients">{elements}</ul>
-                    </div>
+          </div>
+        </div>
+        <div>
+          <div className={`${recipeOne && name ? " " : "hidden"}`}>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-2" />
+                <div className="col-md-4">
+                  <div>
+                    <ul className="ingredients">{elements}</ul>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="recipe-gif">
+                    <img src={gif} alt="" />
+                  </div>
+                  <div className="goToMenu">
+                    <button onClick={this.BackToList}>MAIN MENU</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Fab
-                onClick={this.BackToList}
-                color="primary"
-                aria-label="Add"
-                className={`buttonFridge ${classes.fab}`}
-              >
-                <AddIcon />
-              </Fab>
+          <div className="container">
+            <div className="row">
+              <div
+                className={
+                  "Black  " + (this.state.fridgeVisible ? "" : "hidden")
+                }
+                onClick={this.closeFridge}
+              />
+            </div>
+            <div className="fridge1">
+              <Fridge
+                openFridgeDoor={this.openFridgeDoor}
+                openFlagDoor={this.state.openFlagDoor}
+                fridge={this.state.fridge}
+                closeFridge={this.closeFridge}
+                visible={this.state.fridgeVisible}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(withRouter(Recipe));
+export default withRouter(Recipe);

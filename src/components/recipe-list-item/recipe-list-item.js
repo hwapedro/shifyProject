@@ -11,7 +11,6 @@ class RecipeListItem extends Component {
     this.props.history.push(`/recipe/${this.props.id}`);
   };
   componentDidMount = async () => {
-    let ArrayOfReady = [];
     let count = 0;
     console.log(this.props.ingredients.length);
     for (let j = 0; j < this.props.ingredients.length; j++) {
@@ -41,12 +40,12 @@ class RecipeListItem extends Component {
         key={id}
         onClick={this.ShowRecipe}
         className={
-          `list-group-items ` + (name.indexOf(value) == -1 ? "hidden" : "")
+          `list-group-items ` + ((name.toLowerCase()).indexOf(value.toLowerCase()) == -1 ? "hidden" : "")
         }
       >
         <div className="col-md-12">
           <div className="row">
-            <div className="col-md-10">
+            <div className="col-md-9">
               <div className={done ? "recipe-item-ready" : ""} >
                 <div className="recipe-item" >
                   <span className="recipe-list-item-label">{name}</span>
@@ -64,7 +63,7 @@ class RecipeListItem extends Component {
                 
                 </button> */}
 
-            <div className="col-md-2">
+            <div className="col-md-3">
               <span
                 className={
                   amountReadyIngredients === ingredients.length

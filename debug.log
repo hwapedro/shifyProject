@@ -3,3 +3,7 @@
 [0131/205305.526:WARNING:minidump_to_upload_parameters.cc(66)] duplicate annotation name ver, discarding value 56.0.3051.116
 [0131/205305.526:WARNING:minidump_to_upload_parameters.cc(66)] duplicate annotation name channel, discarding value Stable
 [0131/205305.526:WARNING:minidump_to_upload_parameters.cc(66)] duplicate annotation name ptype, discarding value renderer
+[0131/215119.168:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0131/215119.169:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0131/215119.169:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0131/215119.169:ERROR:exception_snapshot_win.cc(88)] thread ID 23708 not found in process

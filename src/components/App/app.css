@@ -5,6 +5,7 @@ body {
 body .sosi{
   height: 100px;
   background-repeat: repeat;
+  background-image: url(../img/maskot..jpg)
 }
 
 body .container {
@@ -13,15 +14,12 @@ body .container {
   padding-top: 10px;
 }
 .header {
-    
+  background-color:#2a2a2a;
+  height: 100px;
   padding-top: 30px;
-  height: 80px;
+
 }
-.user_GridRight {
-  flex-direction: row;
-  display: flex;
-  justify-content: flex-end;
-}
+
 .user_purpleAvatar:hover {
   cursor: pointer;
 }
@@ -35,10 +33,7 @@ body .container {
 body .sosi .list{
   max-width: 100%;
 }
-.header{
-background-color:#2a2a2a;
-height: 100px;
-}
+
 .searchRecipe{
   color:white;
   padding-left: 5px;
@@ -58,6 +53,7 @@ margin-right: 10px;
 }
 .Black{
   background-color: black;
+  left: 0;
   opacity: 0.6;
   width: 100vw;
   height: 100%;

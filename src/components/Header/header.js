@@ -29,7 +29,7 @@ class Header extends Component {
               <input
                 className="searchRecipe"
                 placeholder="Search"
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="name"
                 value={value}
