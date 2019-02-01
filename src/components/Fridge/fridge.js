@@ -41,9 +41,10 @@ class Fridge extends Component {
               </div>
               <div className="cold_fridge">
                 <div
+                  onClick={openFridgeDoor}
                   className={"doorOfFridge " + (openFlagDoor ? "hidden" : "")}
                 >
-                  <button className="openDoor" onClick={openFridgeDoor} />
+                  <button className="openDoor"  />
                 </div>
 
                 {fridge &&
